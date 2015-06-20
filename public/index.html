@@ -3,6 +3,7 @@
 <html ng-app="mulkiyaOCR">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>OCR - APP</title>
     <link rel="shortcut icon" href="images/camera.png" type="image/x-icon">
     <link rel="icon" href="images/camera.png" type="image/x-icon">
@@ -46,6 +47,7 @@
 
 <!-- Bower Components -->
 <script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-touch/angular-touch.min.js"></script>
 <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.min.js"></script>
@@ -73,9 +75,9 @@
     <div layout-align="center start" layout-fill>
         <div layout-wrap layout="column" layout-align="center center">
             <div ng-show="files[0]">
-                <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya($event)" style="width: 100px; height: 100px">
+                <md-button data-ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya($event)" style="width: 100px; height: 100px">
                     <md-icon md-svg-icon="images/photo.svg" style="width:60px;height:60px;"></md-icon>
-                    <md-tooltip>
+                    <md-tooltip md-direction="right" md-delay="100" md-autohide="true">
                         Scan Mulkiya
                     </md-tooltip>
                 </md-button>
@@ -84,14 +86,10 @@
                 <md-whiteframe class="md-whiteframe-z5" layout="row" layout-align="center center" layout-fill
                                ngf-drop ngf-max-size='4000000' ngf-allow-dir="true" ngf-select="true" ngf-capture="capture"
                                ng-model="files" ngf-drag-over-class="upload-bg-color" ngf-multiple="false" accept="image/*">
-
-                    <div ng-show="files[0]">
-                        <md-card>
+                        <md-card ng-show="files[0]">
                             <md-progress-linear ng-show="progress" md-mode="indeterminate"></md-progress-linear>
                             <img ngf-src="files[0]" ngf-accept="'image/*'">
                         </md-card>
-
-                    </div>
                     <div ng-hide="files[0]" class="md-display-1" layout-margin layout-padding>
                         Select Your Mulkiya or Drop Here!
                     </div>

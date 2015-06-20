@@ -4,12 +4,16 @@
 angular.module('mulkiyaOCR',
     [
         'ui.router',
+        'ngAnimate',
+        'ngTouch',
         'ngFileUpload',
         'ngMaterial'
     ]
 );
 
-angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider, $locationProvider,  $mdGestureProvider) {
+
+    $mdGestureProvider.skipClickHijack();
 
     $locationProvider.html5Mode({
         enabled: false,
@@ -23,9 +27,9 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
 
 }).controller('ApplicationController', function ($scope, Upload, $mdDialog) {
     $scope.progress = false;
-    $scope.mode = 'buffer';
 
     $scope.uploadMulkiya = function(event){
+        $scope.progress = true;
         $scope.upload($scope.files, event);
     };
 
@@ -38,10 +42,14 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
                     file: file,
                     fileName: "file"
                 }).progress(function (evt) {
+                    if(!$scope.progress) {
+                        $scope.progress = true;
+                    }
+
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                    $scope.progress = true;
                 }).success(function (data, status, headers, config) {
+                    $scope.progress = false;
                     $mdDialog.show(
                         $mdDialog.alert()
                             .parent(angular.element(document.body))
@@ -51,7 +59,6 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
                             .ok('Got it!')
                             .targetEvent(event)
                     );
-                    $scope.progress = false;
                     console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
                 });
             }
