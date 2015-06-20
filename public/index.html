@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="mulkiyaOCR">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>OCR - APP</title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body ng-controller="ApplicationController">
+<script src="bower_components/angular/angular.min.js"></script>
+
+<script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+<script src="bower_components/ng-file-upload-shim/ng-file-upload.min.js"></script>
+<script src="scripts/app.js"></script>
+
+<div layout="column" layout-align="center start">
+    <div layout-fill>
+        <md-toolbar class="md-primary md-hue-2" layout-padding>
+            <div layout="row">
+                <h1 class="md-toolbar-tools">
+                    <span>Mulkiya Text Scanner</span>
+                </h1>
+                <div ng-show="progress">
+                    <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
+                </div>
+            </div>
+        </md-toolbar>
+    </div>
+    <div layout-align="center start" class="md-tall" layout-fill layout-margin>
+        <div style="height: 200px;" flex="10">
+            <md-whiteframe class="md-whiteframe-z5" layout="row" layout-align="center center" layout-fill ngf-drop
+                           ngf-max-size='4000000' ngf-hide-on-drop-not-available="true"
+                           ng-model="files" ngf-drag-over-class="upload-bg-color" ngf-multiple="false" accept="image/*,application/pdf">
+                <div ng-show="files[0]">
+                    <md-card>
+                        <img ngf-src="files[0]" ngf-accept="'image/*'">
+
+                        <md-progress-linear ng-show="progress" class="md-warn" md-mode="buffer" value="{{progressValue}}" md-buffer-value="{{bufferValue}}"></md-progress-linear>
+
+                        <md-card-content>
+                            <div layout="row" layout-align="center center">
+                                    <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya()">
+                                        <label>
+                                            <md-icon md-svg-icon="images/photo.svg"></md-icon>
+                                        </label>
+                                        <md-tooltip>
+                                            Scan Mulkiya
+                                        </md-tooltip>
+                                    </md-button>
+                                </div>
+                        </md-card-content>
+                    </md-card>
+
+                </div>
+                <div ng-hide="files[0]">
+                    Drop your mulkiya here
+                </div>
+            </md-whiteframe>
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

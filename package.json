@@ -1,0 +1,19 @@
+{
+  "name": "mulkiya-ocr",
+  "version": "1.0.0",
+  "author": "Minhaj",
+  "license": "MIT",
+  "description": "Optical character recognition app",
+  "private": false,
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "blueimp-file-upload-expressjs": "^0.4.4",
+    "express": "~3.4.6",
+    "multer": "^0.1.8",
+    "node-tesseract": "^0.2.7"
+  }
+}

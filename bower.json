@@ -1,0 +1,24 @@
+{
+  "name": "mulkiya-ocr",
+  "version": "1.0.0",
+  "authors": [
+    "Minhaj Mehmood <minhaj.kk@gmail.com>"
+  ],
+  "directory": "public/bower_components",
+  "license": "MIT",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "ui-router": "~0.2.15",
+    "angular-material": "~0.10.0",
+    "ng-file-upload-shim": "~5.0.9",
+    "ng-file-upload": "~5.0.9"
+  }
+}
