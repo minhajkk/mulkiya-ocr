@@ -24,8 +24,6 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
 }).controller('ApplicationController', function ($scope, Upload, $mdDialog) {
     $scope.progress = false;
     $scope.mode = 'buffer';
-    $scope.progressValue = 0;
-    $scope.bufferValue = 0;
 
     $scope.uploadMulkiya = function(){
         $scope.upload($scope.files);
@@ -42,8 +40,6 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
                 }).progress(function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-                    $scope.progressValue = progressPercentage;
-                    $scope.bufferValue = progressPercentage + 10;
                     $scope.progress = true;
                 }).success(function (data, status, headers, config) {
                     $mdDialog.show(

@@ -1,20 +1,58 @@
 <!DOCTYPE html>
+<!-- To know more about my favourite topics visit my blog http://minhaj.io -->
 <html ng-app="mulkiyaOCR">
 <head lang="en">
     <meta charset="UTF-8">
     <title>OCR - APP</title>
+    <link rel="shortcut icon" href="images/camera.png" type="image/x-icon">
+    <link rel="icon" href="images/camera.png" type="image/x-icon">
+
+    <!-- Meta tags -->
+    <meta name="keywords" content="ocr, optical character recognition"/>
+    <meta name="description" content="Optical character recognition prototype for extracting text from car registration card."/>
+    <meta name="language" content="EN">
+    <meta name="robots" content="index,follow" />
+    <meta name="summary" content="Optical character recognition prototype for extracting text from car registration card.">
+    <meta name="revisit-after" content="7 days">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:title" content="OCR - APP">
+    <meta name="twitter:site" content="https://mulkiya-ocr.herokuapp.com/">
+    <meta name="twitter:creator" content="@minhajkk">
+    <meta name="twitter:card" content="images/camera.png">
+    <meta name="twitter:image" content="images/camera.png">
+
+    <!-- Open Graph -->
+    <meta name="og:title" content="Optical character recognition application"/>
+    <meta name="og:url" content="https://mulkiya-ocr.herokuapp.com/"/>
+    <meta name="og:image" content="images/camera.png"/>
+    <meta name="og:site_name" content="mulkiya-ocr"/>
+    <meta name="og:description" content="Optical character recognition prototype for extracting text from car registration card."/>
+    <meta name="og:locality" content="Dubai"/>
+    <meta name="og:region" content="dxb"/>
+    <meta name="og:country-name" content="UAE"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US">
+
+    <!-- Style Sheets -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="css/styles.css"/>
 </head>
+
 <body ng-controller="ApplicationController">
+
+<!-- Bower Components -->
 <script src="bower_components/angular/angular.min.js"></script>
-
 <script src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
-
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="bower_components/angular-material/angular-material.min.js"></script>
 <script src="bower_components/ng-file-upload-shim/ng-file-upload.min.js"></script>
+
+<!-- Application JS -->
 <script src="scripts/app.js"></script>
 
 <div layout="column" layout-align="center start">
@@ -22,7 +60,9 @@
         <md-toolbar class="md-primary md-hue-2" layout-padding>
             <div layout="row">
                 <h1 class="md-toolbar-tools">
-                    <span>Mulkiya Text Scanner</span>
+                    <span class="md-display-1">
+                        Mulkiya Text Scanner
+                    </span>
                 </h1>
                 <div ng-show="progress">
                     <md-progress-circular class="md-warn" md-mode="indeterminate"></md-progress-circular>
@@ -38,20 +78,18 @@
                 <div ng-show="files[0]">
                     <md-card>
                         <img ngf-src="files[0]" ngf-accept="'image/*'">
-
-                        <md-progress-linear ng-show="progress" class="md-warn" md-mode="buffer" value="{{progressValue}}" md-buffer-value="{{bufferValue}}"></md-progress-linear>
-
+                        <md-progress-linear ng-show="progress" md-mode="indeterminate"></md-progress-linear>
                         <md-card-content>
                             <div layout="row" layout-align="center center">
-                                    <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya()">
-                                        <label>
-                                            <md-icon md-svg-icon="images/photo.svg"></md-icon>
-                                        </label>
-                                        <md-tooltip>
-                                            Scan Mulkiya
-                                        </md-tooltip>
-                                    </md-button>
-                                </div>
+                                <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya()">
+                                    <label>
+                                        <md-icon md-svg-icon="images/photo.svg"></md-icon>
+                                    </label>
+                                    <md-tooltip>
+                                        Scan Mulkiya
+                                    </md-tooltip>
+                                </md-button>
+                            </div>
                         </md-card-content>
                     </md-card>
 
@@ -62,10 +100,11 @@
             </md-whiteframe>
         </div>
     </div>
+    <div layout-fill layout-margin layout-padding>
+        <div layout="row" layout-align="center end">
+            <!--© 2015 Minhaj Mehmood.-->
+        </div>
+    </div>
 </div>
-
-
-
-
 </body>
 </html>
