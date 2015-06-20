@@ -70,34 +70,33 @@
             </div>
         </md-toolbar>
     </div>
-    <div layout-align="center start" class="md-tall" layout-fill layout-margin>
-        <div style="height: 200px;" flex="10">
-            <md-whiteframe class="md-whiteframe-z5" layout="row" layout-align="center center" layout-fill ngf-drop
-                           ngf-max-size='4000000' ngf-hide-on-drop-not-available="true"
-                           ng-model="files" ngf-drag-over-class="upload-bg-color" ngf-multiple="false" accept="image/*,application/pdf">
-                <div ng-show="files[0]">
-                    <md-card>
-                        <img ngf-src="files[0]" ngf-accept="'image/*'">
-                        <md-progress-linear ng-show="progress" md-mode="indeterminate"></md-progress-linear>
-                        <md-card-content>
-                            <div layout="row" layout-align="center center">
-                                <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya()">
-                                    <label>
-                                        <md-icon md-svg-icon="images/photo.svg"></md-icon>
-                                    </label>
-                                    <md-tooltip>
-                                        Scan Mulkiya
-                                    </md-tooltip>
-                                </md-button>
-                            </div>
-                        </md-card-content>
-                    </md-card>
+    <div layout-align="center start" layout-fill>
+        <div layout-wrap layout="column" layout-align="center center">
+            <div ng-show="files[0]">
+                <md-button ng-disabled="(files[0]) && (progress === true)" class="md-fab" ng-click="uploadMulkiya($event)" style="width: 100px; height: 100px">
+                    <md-icon md-svg-icon="images/photo.svg" style="width:60px;height:60px;"></md-icon>
+                    <md-tooltip>
+                        Scan Mulkiya
+                    </md-tooltip>
+                </md-button>
+            </div>
+            <div style="height: 400px;" layout-margin >
+                <md-whiteframe class="md-whiteframe-z5" layout="row" layout-align="center center" layout-fill
+                               ngf-drop ngf-max-size='4000000' ngf-allow-dir="true" ngf-select="true" ngf-capture="capture"
+                               ng-model="files" ngf-drag-over-class="upload-bg-color" ngf-multiple="false" accept="image/*">
 
-                </div>
-                <div ng-hide="files[0]">
-                    Drop your mulkiya here
-                </div>
-            </md-whiteframe>
+                    <div ng-show="files[0]">
+                        <md-card>
+                            <md-progress-linear ng-show="progress" md-mode="indeterminate"></md-progress-linear>
+                            <img ngf-src="files[0]" ngf-accept="'image/*'">
+                        </md-card>
+
+                    </div>
+                    <div ng-hide="files[0]" class="md-display-1" layout-margin layout-padding>
+                        Select Your Mulkiya or Drop Here!
+                    </div>
+                </md-whiteframe>
+            </div>
         </div>
     </div>
     <div layout-fill layout-margin layout-padding>
@@ -108,3 +107,4 @@
 </div>
 </body>
 </html>
+

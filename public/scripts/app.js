@@ -25,11 +25,11 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
     $scope.progress = false;
     $scope.mode = 'buffer';
 
-    $scope.uploadMulkiya = function(){
-        $scope.upload($scope.files);
+    $scope.uploadMulkiya = function(event){
+        $scope.upload($scope.files, event);
     };
 
-    $scope.upload = function (files) {
+    $scope.upload = function (files, event) {
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
                 var file = files[i];
@@ -49,6 +49,7 @@ angular.module('mulkiyaOCR').config(function($stateProvider, $urlRouterProvider,
                             .content(data)
                             .ariaLabel('Alert Dialog')
                             .ok('Got it!')
+                            .targetEvent(event)
                     );
                     $scope.progress = false;
                     console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
