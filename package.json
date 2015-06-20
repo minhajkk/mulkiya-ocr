@@ -16,5 +16,8 @@
     "express": "~3.4.6",
     "multer": "^0.1.8",
     "node-tesseract": "^0.2.7"
+  },
+  "engines": {
+    "node": "~0.10.33"
   }
 }
