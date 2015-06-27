@@ -6,6 +6,10 @@
   "description": "Optical character recognition app",
   "private": false,
   "main": "server/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minhajkk/mulkiya-ocr.git"
+  },
   "scripts": {
     "start": "node server/app.js",
     "postinstall": "bower install"

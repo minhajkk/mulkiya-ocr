@@ -23,8 +23,9 @@ module.exports = function(app) {
  * Following steps done under this functions.
  *
  * 1. Uploads image under '.tmp' folder.
- * 2. Grap text from image using 'tesseract'.
+ * 2. Grab text from image using 'tesseract-ocr'.
  * 3. Delete image from hardisk.
+ * 4. Return text in json format.
  *
  * @param req
  * @param res
