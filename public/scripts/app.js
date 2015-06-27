@@ -4,8 +4,6 @@
 angular.module('mulkiyaOCR',
     [
         'ui.router',
-        'ngAnimate',
-        'ngTouch',
         'ngFileUpload',
         'ngMaterial'
     ]
